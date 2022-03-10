@@ -28,7 +28,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+    return text< 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
@@ -52,6 +52,15 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
+   // frist time I try to solve this way but aftar that i get clue   
+//  let description;
+//  if (post.description.length > 30){
+
+//    description = post.description.slice(0,30);
+//  }else {
+//    description = post.description;
+//  }
+
   console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
@@ -105,7 +114,7 @@ const createPost = (post) => {
                   </button>
                 </div>
 
-                <div class="post__content">${displayContent(post.description)}</div>
+                <div class="post__content"> ${displayContent(post.description)} </div>
 
                 <div class="post__infos">
                   <div class="post__likes">
@@ -123,9 +132,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                          ${post.comments.user}
                       </a>
-                      ${post.comments?.text}
+                      ${post.comments}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
