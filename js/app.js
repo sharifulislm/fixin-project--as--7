@@ -130,12 +130,13 @@ const createPost = (post) => {
                   <hr/>
 
                   <div class="post__description">
-                    <small>
-                      <a class="post__name--underline" href="#">
-                          ${post.comments.user}
-                      </a>
-                      ${post.comments}
-                    </small>
+                    
+                            <small>
+                            <a class="post__name--underline" href="#">
+                               <b> ${post.comments[0].user} </b>
+                            </a>
+                             ${ post.comments[0].text} 
+                                </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
                 </div>
