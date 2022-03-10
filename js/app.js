@@ -16,6 +16,7 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
+  // I m fixing here im makeing correct push 
     likedPostsId.push(id); 
     showPosts(posts);
 };
@@ -54,6 +55,7 @@ const createPost = (post) => {
   console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
+      // I m fixing img src that prblem was src path im makeing correct img crs  
     div.classList.add( "post" );
     div.innerHTML = `
               <div class="post__header">
