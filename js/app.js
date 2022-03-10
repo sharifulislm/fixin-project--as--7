@@ -1,72 +1,72 @@
-let posts=[ ];
+let posts = [];
 
 const likedPostsId = [];
 const reportedPostsId = [];
 
 const getLikedPosts = () => {
-    return posts.filter((post) => likedPostsId.includes(post.id));
+	return posts.filter((post) => likedPostsId.includes(post.id));
 };
 
 const getReportedPosts = () => {
-    return posts.filter((post) => reportedPostsId.includes(post.id));
+	return posts.filter((post) => reportedPostsId.includes(post.id));
 };
 
 const isLiked = (id) => {
-    return likedPostsId?.length && !!likedPostsId.includes(id);
+	return likedPostsId?.length && !!likedPostsId.includes(id);
 };
 
 const addToLiked = (id) => {
-  // I m fixing here im makeing correct push 
-    likedPostsId.push(id); 
-    showPosts(posts);
+	// I m fixing here im makeing correct push 
+	likedPostsId.push(id);
+	showPosts(posts);
 };
 
 const reportPost = (id) => {
-    reportedPostsId.push(id);
-    const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
-    showPosts(remainingPosts);
+	reportedPostsId.push(id);
+	const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
+	showPosts(remainingPosts);
 };
 
 const displayContent = (text) => {
-    return text< 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+	return text < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
-    if (id === "posts") {
-        document.getElementById( "posts" ).style.display = "grid";
-        document.getElementById( "liked" ).style.display = "none";
-        document.getElementById( "reported" ).style.display = "none";
-    } else if (id === "liked") {
-        document.getElementById( "liked" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
-        document.getElementById( "reported" ).style.display = "none";
+	if (id === "posts") {
+		document.getElementById("posts").style.display = "grid";
+		document.getElementById("liked").style.display = "none";
+		document.getElementById("reported").style.display = "none";
+	} else if (id === "liked") {
+		document.getElementById("liked").style.display = "block";
+		document.getElementById("posts").style.display = "none";
+		document.getElementById("reported").style.display = "none";
 
-        displayLikedPosts();
-    } else {
-        document.getElementById( "reported" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
-        document.getElementById( "liked" ).style.display = "none";
+		displayLikedPosts();
+	} else {
+		document.getElementById("reported").style.display = "block";
+		document.getElementById("posts").style.display = "none";
+		document.getElementById("liked").style.display = "none";
 
-        displayReportedPosts();
-    }
+		displayReportedPosts();
+	}
 };
 
 const createPost = (post) => {
-   // frist time I try to solve this way but aftar that i get clue   
-//  let description;
-//  if (post.description.length > 30){
+	// frist time I try to solve this way but aftar that i get clue   
+	//  let description;
+	//  if (post.description.length > 30){
 
-//    description = post.description.slice(0,30);
-//  }else {
-//    description = post.description;
-//  }
+	//    description = post.description.slice(0,30);
+	//  }else {
+	//    description = post.description;
+	//  }
 
-  // console.log(post);
-    const image = post.image;
-    const div = document.createElement( "article" );
-      // I m fixing img src that prblem was src path im makeing correct img crs  
-    div.classList.add( "post" );
-    div.innerHTML = `
+	// console.log(post);
+	const image = post.image;
+	const div = document.createElement("article");
+	// I m fixing img src that prblem was src path im makeing correct img crs  
+	div.classList.add("post");
+	div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
                   <a
@@ -142,48 +142,48 @@ const createPost = (post) => {
                 </div>
               </div>
       `;
-    return div;
+	return div;
 };
 
 const showPosts = (posts) => {
-    const productsContainer = document.getElementById( "posts" );
-    productsContainer.innerHTML = "";
+	const productsContainer = document.getElementById("posts");
+	productsContainer.innerHTML = "";
 
-    posts.forEach((post) => {
-        const div = createPost(post);
-        productsContainer.appendChild(div);
-    });
+	posts.forEach((post) => {
+		const div = createPost(post);
+		productsContainer.appendChild(div);
+	});
 };
 
 const displayLikedPosts = () => {
-  // this id  for Question box need to clear 
-  document.getElementById('section-content').innerHTML="";
-  document.getElementById( "liked" ).innerHTML='';
-    const likedPosts = getLikedPosts();
-    likedPosts.forEach((post) => {
-        const div = createPost(post);
-        document.getElementById( "liked" ).appendChild(div);
-        
-    });
-    
+	// this id  for Question box need to clear 
+	document.getElementById('section-content').innerHTML = "";
+	document.getElementById("liked").innerHTML = '';
+	const likedPosts = getLikedPosts();
+	likedPosts.forEach((post) => {
+		const div = createPost(post);
+		document.getElementById("liked").appendChild(div);
+
+	});
+
 };
 
 const displayReportedPosts = () => {
-    // this id  for Question box need to clear 
-  document.getElementById('section-content').innerHTML="";
-  document.getElementById( "reported" ).innerHTML='';
-    const reportedPosts = getReportedPosts();
-  
-     reportedPosts.forEach((post) => {
-        const div = createPost(post);
-        document.getElementById( "reported" ).appendChild(div);
-    });
+	// this id  for Question box need to clear 
+	document.getElementById('section-content').innerHTML = "";
+	document.getElementById("reported").innerHTML = '';
+	const reportedPosts = getReportedPosts();
+
+	reportedPosts.forEach((post) => {
+		const div = createPost(post);
+		document.getElementById("reported").appendChild(div);
+	});
 };
 
-const loadPosts = async () =>{
-  let data = await fetch('../data/posts.json');
-  posts = await data.json();
-  showPosts(posts);
+const loadPosts = async () => {
+	let data = await fetch('../data/posts.json');
+	posts = await data.json();
+	showPosts(posts);
 }
 
 loadPosts();
