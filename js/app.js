@@ -156,14 +156,22 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  // this id  for Question box need to clear 
+  document.getElementById('section-content').innerHTML="";
+  document.getElementById( "liked" ).innerHTML='';
     const likedPosts = getLikedPosts();
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
+        
     });
+    
 };
 
 const displayReportedPosts = () => {
+    // this id  for Question box need to clear 
+  document.getElementById('section-content').innerHTML="";
+  document.getElementById( "reported" ).innerHTML='';
     const reportedPosts = getReportedPosts();
   
      reportedPosts.forEach((post) => {
