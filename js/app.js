@@ -61,7 +61,7 @@ const createPost = (post) => {
 //    description = post.description;
 //  }
 
-  console.log(post);
+  // console.log(post);
     const image = post.image;
     const div = document.createElement( "article" );
       // I m fixing img src that prblem was src path im makeing correct img crs  
@@ -165,7 +165,8 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+  
+     reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
