@@ -52,7 +52,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-	// frist time I try to solve this way but aftar that i get clue   
+	// frist time I try to solve this way but aftar that i got anothr clue   
 	//  let description;
 	//  if (post.description.length > 30){
 
@@ -156,7 +156,7 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
-	// this id  for Question box need to clear 
+	// this id  for previous content need to clear 
 	document.getElementById('section-content').innerHTML = "";
 	document.getElementById("liked").innerHTML = '';
 	const likedPosts = getLikedPosts();
@@ -169,7 +169,7 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
-	// this id  for Question box need to clear 
+	// this id  for previous content need to clear 
 	document.getElementById('section-content').innerHTML = "";
 	document.getElementById("reported").innerHTML = '';
 	const reportedPosts = getReportedPosts();
